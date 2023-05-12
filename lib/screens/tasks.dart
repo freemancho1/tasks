@@ -25,9 +25,9 @@ class TasksScreen extends StatelessWidget {
             message: ConstCfg.textTasksNothing,
             style: ThemeCfg.styleEmptyList,
           )
-        : Padding(
+        : const Padding(
             padding: ConstCfg.edgeLargeTLR,
-            child: TaskListComponent(tasks: tasks),
+            child: TaskListComponent(),
           ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => context.go('/${ConstCfg.routeNew}'),

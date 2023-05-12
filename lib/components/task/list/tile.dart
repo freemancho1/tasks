@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:tasks/components/task/list/tile_date.dart';
 import 'package:tasks/components/task/list/tile_subtitle.dart';
 import 'package:tasks/components/task/list/tile_title.dart';
@@ -8,9 +9,7 @@ import '../../../models/data/task.dart';
 import '../../../sys/config/constants.dart';
 
 class TaskTileComponent extends StatefulWidget {
-  final Task task;
-  const TaskTileComponent({super.key, required this.task});
-
+  const TaskTileComponent({super.key});
   @override
   State<TaskTileComponent> createState() => _TaskTileComponentState();
 }
@@ -21,12 +20,13 @@ class _TaskTileComponentState extends State<TaskTileComponent> {
 
   @override
   Widget build(BuildContext context) {
+    final task = context.watch<Task>();
     return Container(
-      decoration: BoxDecoration(
-        border: ThemeCfg.borderTile(isActive),
-      ),
+      // decoration: BoxDecoration(
+      //   border: ThemeCfg.borderTile(isActive),
+      // ),
       margin: EdgeInsets.only(
-        left: widget.task.depth * ConstCfg.sizeDoubleLarge
+        left: task.depth * ConstCfg.sizeDoubleLarge
       ),
       child: InkResponse(
         onTap: () => focusNode.requestFocus(),
@@ -40,10 +40,10 @@ class _TaskTileComponentState extends State<TaskTileComponent> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TaskTileTitleComponent(task: widget.task, isActive: isActive),
+            TaskTileTitleComponent(isActive: isActive),
             if (isActive)
-              TaskTileSubtitleComponent(task: widget.task, isActive: isActive),
-            TaskTileDateComponent(task: widget.task, isActive: isActive)
+              TaskTileSubtitleComponent(isActive: isActive),
+            TaskTileDateComponent(isActive: isActive)
           ],
         ),
       ),

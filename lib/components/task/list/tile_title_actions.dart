@@ -8,14 +8,11 @@ import '../../../models/data/task.dart';
 import '../../../sys/config/constants.dart';
 
 class TaskTileTitleActionsComponent extends StatelessWidget {
-  final Task _task;
-  const TaskTileTitleActionsComponent({
-    super.key,
-    required Task task,
-  }) : _task = task;
+  const TaskTileTitleActionsComponent({super.key,});
 
   @override
   Widget build(BuildContext context) {
+    final Task task = context.watch<Task>();
     return Container(
       height: ConstCfg.sizeActionIconContainerHeight,
       decoration: BoxDecoration(
@@ -36,7 +33,7 @@ class TaskTileTitleActionsComponent extends StatelessWidget {
             ConstCfg.iconDelete,
             padRight: true,
             onTapActionHandler: () =>
-              context.read<TaskBoxViewModel>().remove(_task),
+              context.read<TaskBoxViewModel>().remove(task),
           ),
         ],
       ),

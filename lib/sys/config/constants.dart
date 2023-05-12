@@ -63,7 +63,7 @@ class ConstCfg {
   static const String textTasksAppbarTitle = '할일 목록';
   static const String textTasksNothing = '훌륭합니다.\n할일이 없습니다.';
   static const EdgeInsets edgeTileSubContents = EdgeInsets.only(
-    left: sizeTileSubContents, right: sizeNormal, bottom: sizeNormal,
+    left: sizeTileSubContents, right: sizeNormal, bottom: sizeSmall,
   );
   static const double sizeTileSubContents = 40.0;
 

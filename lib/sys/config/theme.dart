@@ -62,7 +62,7 @@ class ThemeCfg {
   static BoxBorder borderTile([bool isActive = false]) =>
     Border.all(
       color: isActive ? colorSecondary : colorOutline,
-      width: 1.0,
+      // width: 1.0,
     );
 
   /// 시스템 스타일
